@@ -1,0 +1,5 @@
+name=小a
+age=23
+gender=男
+height=170.0
+hobby=睡觉
