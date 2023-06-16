@@ -1,5 +1,7 @@
 package test.turnprint;
 
+import static java.util.concurrent.locks.LockSupport.park;
+import static java.util.concurrent.locks.LockSupport.unpark;
 
 /**
  * @author :
@@ -18,19 +20,19 @@ public class LockSupport1 {
             for (char c : numberA.toCharArray()) {
                 System.out.print(c);
                 //唤醒线程B
-                java.util.concurrent.locks.LockSupport.unpark(threadB);
+                unpark(threadB);
                 //暂停当前线程
-                java.util.concurrent.locks.LockSupport.park();
+                park();
 
             }
         });
         threadB = new Thread(() -> {
             for (char c : characterB.toCharArray()) {
                 //暂停当前线程
-                java.util.concurrent.locks.LockSupport.park();
+                park();
                 System.out.print(c);
                 //唤醒线程A
-                java.util.concurrent.locks.LockSupport.unpark(threadA);
+                unpark(threadA);
             }
         });
         threadA.start();
