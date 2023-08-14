@@ -8,7 +8,7 @@ public class fanshe {
         Class<? extends String> strClass = str.getClass();
         Field field = strClass.getDeclaredField("value");
         field.setAccessible(true);
-        field.set(str,new char[] {'1','1','1'});
+        field.set(str,new char[] {'a','b','d'});
         System.out.println(str);
     }
 }
